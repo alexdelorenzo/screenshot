@@ -15,13 +15,11 @@ def screenshot_window(application_name: str, title: str=None, filename: str=None
     if not filename:
         filename = '_'.join(map(str, (application_name, title, datetime.now()))) + '.png'
 
-    windows = list(gen_window_ids(application_name, title, window_selection_options))
+    try:
+        window = next(gen_window_ids(application_name, title, window_selection_options))
 
-    if windows:
-        window = windows[0]
-
-    else:
-        raise ValueError("Window with parent %s and title %s not found." % (application_name, title))
+    except StopIteration as ex:
+        raise ValueError("Window with parent %s and title %s not found." % (application_name, title)) from ex
 
     rc, output = getstatusoutput('screencapture -l %s "%s"' % (window, filename))
 
