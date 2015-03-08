@@ -4,9 +4,11 @@
 pyscreencapture let's you specify an Application Name and Window Title to take a screenshot of a specific window via the commandline.
 It's a thin wrapper that grabs the window IDs from Quartz and passes them to `screencapture`.
 
+## Example
+Take a screenshot of the Pycharm application with the window title containing "pyscreencapture".
+
 `python3 screencapture.py Pycharm -t pyscreencapture`
 
-ake a screenshot of the Pycharm application with the window title containing "pyscreencapture".
 
 ## Installation
 Grab the source, run the following in the source dir:
