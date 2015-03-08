@@ -29,7 +29,7 @@ def screenshot_window(application_name: str, title: str=None, filename: str=None
         return filename
 
     else:
-        raise Exception("Error in screencapture command %s: %s", (rc, output))
+        raise Exception("Error in screencapture command %s: %s" % (rc, output))
 
 
 if __name__ == "__main__":
