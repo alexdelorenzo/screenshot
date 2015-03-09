@@ -20,10 +20,10 @@ def _filename(*args) -> str:
 
 
 @click.command()
-@click.option('-t', '--title', default=None, help="Title of window from APPLICATION_NAME to capture.")
-@click.option('-f', '--filename', default=None, help="Filename to save the captured PNG as.")
 @click.option('-w', '--window_selection_options', default=user_options_str,
               help="Options: " + ' '.join(option for option in options) + '\nDefault: ' + user_options_str)
+@click.option('-t', '--title', default=None, help="Title of window from APPLICATION_NAME to capture.")
+@click.option('-f', '--filename', default=None, help="Filename to save the captured PNG as.")
 @click.option('-a', '--all_windows', is_flag=True, default=False, help="Capture all windows matching parameters")
 @click.argument('application_name')
 def screenshot_window(application_name: str, title: str='', filename: str='', window_selection_options: str='',
