@@ -7,12 +7,12 @@ from get_window_id import gen_window_ids, options, user_options_str
 
 
 def take_screenshot(window: int, filename: str) -> str:
-    rc, output = getstatusoutput('screencapture -l %s %s.png' % (window, filename))
+    rc, output = getstatusoutput('screencapture -l %s "%s"' % (window, filename))
 
     if rc != 0:
         raise Exception("Error in screencapture command %s: %s", (rc, output))
 
-    return '%s.png' % filename
+    return filename
 
 
 def _filename(*args) -> str:
