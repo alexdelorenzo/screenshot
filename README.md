@@ -28,9 +28,10 @@ Options:
                                   capture.
   -f, --filename TEXT             Filename to save the captured PNG as.
   -w, --window_selection_options TEXT
-                                  Options: above_window on_screen_only
-                                  include_window all_windows exclude_desktop
-                                  below_window
+                                  Options: below_window on_screen_only
+                                  above_window include_window exclude_desktop
+                                  all_windows
+  -a, --all                       Capture all windows matching parameters.
   --help                          Show this message and exit.
 ```
 
