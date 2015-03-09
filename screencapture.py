@@ -6,17 +6,16 @@ import click
 from get_window_id import gen_window_ids, options, user_options_str
 
 
-def take_screenshot(window: int, filename: str):
+def take_screenshot(window: int, filename: str) -> str:
     rc, output = getstatusoutput('screencapture -l %s %s.png' % (window, filename))
 
     if rc != 0:
         raise Exception("Error in screencapture command %s: %s", (rc, output))
 
-    else:
-        return '%s.png' % filename
+    return '%s.png' % filename
 
 
-def _filename(*args):
+def _filename(*args) -> str:
     return '_'.join(map(str, args + (datetime.now(),))) + '.png'
 
 
