@@ -30,6 +30,7 @@ def gen_ids_from_info(windows: iter) -> iter:
         owner = win_dict.get('kCGWindowOwnerName', '')
         name = win_dict.get('kCGWindowName', '')
         num = win_dict.get('kCGWindowNumber', '')
+
         yield num, owner, name
 
 
