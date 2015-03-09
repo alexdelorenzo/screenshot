@@ -24,14 +24,16 @@ then run
 Usage: screencapture.py [OPTIONS] APPLICATION_NAME
 
 Options:
+  -w, --window_selection_options TEXT
+                                  Options: all_windows on_screen_only
+                                  exclude_desktop include_window below_window
+                                  above_window
+                                  Default: exclude_desktop
+                                  on_screen_only
   -t, --title TEXT                Title of window from APPLICATION_NAME to
                                   capture.
   -f, --filename TEXT             Filename to save the captured PNG as.
-  -w, --window_selection_options TEXT
-                                  Options: below_window on_screen_only
-                                  above_window include_window exclude_desktop
-                                  all_windows
-  -a, --all                       Capture all windows matching parameters.
+  -a, --all_windows               Capture all windows matching parameters
   --help                          Show this message and exit.
 ```
 
