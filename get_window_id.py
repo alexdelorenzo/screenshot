@@ -5,7 +5,7 @@ try:
                        kCGWindowListOptionIncludingWindow
 
 except ImportError as ex:
-    raise Exception("Please install pyobjc-framework-Quartz via pip.") from ex
+    raise ImportError("Please install pyobjc-framework-Quartz via pip.") from ex
 
 
 options = {'all_windows': kCGWindowListOptionAll,
