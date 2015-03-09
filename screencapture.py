@@ -22,10 +22,12 @@ def _filename(*args) -> str:
 @click.command()
 @click.option('-t', '--title', default=None, help="Title of window from APPLICATION_NAME to capture.")
 @click.option('-f', '--filename', default=None, help="Filename to save the captured PNG as.")
-@click.option('-w', '--window_selection_options', default=user_options_str, help="Options: " + ' '.join(option for option in options))
-@click.option('-a', '--all', is_flag=True, default=False)
+@click.option('-w', '--window_selection_options', default=user_options_str,
+              help="Options: " + ' '.join(option for option in options))
+@click.option('-a', '--all_windows', is_flag=True, default=False)
 @click.argument('application_name')
-def screenshot_window(application_name: str, title: str=None, filename: str=None, window_selection_options: str=None, all: bool=False, **kwargs):
+def screenshot_window(application_name: str, title: str='', filename: str='', window_selection_options: str='',
+                      all_windows: bool=False, **kwargs):
     windows = gen_window_ids(application_name, title, window_selection_options)
 
     try:
@@ -34,7 +36,7 @@ def screenshot_window(application_name: str, title: str=None, filename: str=None
     except StopIteration as ex:
         raise ValueError("Window with parent %s and title %s not found." % (application_name, title)) from ex
 
-    if all:
+    if all_windows:
         windows = list(windows) + [window]
 
         for window in windows:
