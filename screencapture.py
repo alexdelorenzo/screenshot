@@ -37,7 +37,7 @@ def screenshot_window(application_name: str, title: str='', filename: str='', wi
         raise ValueError("Window with parent %s and title %s not found." % (application_name, title)) from ex
 
     if all_windows:
-        windows = list(windows) + [window]
+        windows = [window] + list(windows)
 
         for window in windows:
             filename = _filename(application_name, title)

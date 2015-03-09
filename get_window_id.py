@@ -17,7 +17,7 @@ options = {'all_windows': kCGWindowListOptionAll,
 
 user_options_str = 'exclude_desktop on_screen_only'
 
-summer = lambda *opts: sum(options[opt] for opt in opts)
+summer = lambda *opts: sum(options[opt] for opt in opts if opt in options)
 user_options = summer(*user_options_str.split())
 
 
