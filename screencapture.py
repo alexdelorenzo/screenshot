@@ -34,10 +34,15 @@ def screenshot_window(application_name: str, title: str=None, filename: str=None
     except StopIteration as ex:
         raise ValueError("Window with parent %s and title %s not found." % (application_name, title)) from ex
 
-    windows = (list(windows) + [window]) if all else [window]
+    if all:
+        windows = (list(windows) + [window])
 
-    for window in windows:
-        filename = _filename(application_name, title)
+        for window in windows:
+            filename = _filename(application_name, title)
+            print(take_screenshot(window, filename))
+
+    else:
+        filename = filename if filename else _filename(application_name, title)
         print(take_screenshot(window, filename))
 
 
