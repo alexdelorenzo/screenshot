@@ -18,7 +18,7 @@ options = {'all_windows': kCGWindowListOptionAll,
 user_options_str = 'exclude_desktop on_screen_only'
 
 summer = lambda *opts: sum(options[opt] for opt in opts if opt in options)
-user_options = summer(*user_options_str.split())
+user_options = summer(*user_options_str.split(' '))
 
 
 def get_window_info(options: int=user_options, relative_to: bool=kCGNullWindowID) -> list:
@@ -30,6 +30,7 @@ def gen_ids_from_info(windows: iter) -> iter:
         owner = win_dict.get('kCGWindowOwnerName', '')
         name = win_dict.get('kCGWindowName', '')
         num = win_dict.get('kCGWindowNumber', '')
+
         yield num, owner, name
 
 

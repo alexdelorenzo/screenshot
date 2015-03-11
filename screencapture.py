@@ -10,7 +10,7 @@ def take_screenshot(window: int, filename: str) -> str:
     rc, output = getstatusoutput('screencapture -l %s "%s"' % (window, filename))
 
     if rc != 0:
-        raise Exception("Error in screencapture command %s: %s", (rc, output))
+        raise Exception("Error in screenccapture command %s: %s", (rc, output))
 
     return filename
 
