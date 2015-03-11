@@ -21,19 +21,20 @@ then run
 `python3 pyscreencapture.py --help`
 
 ```
-Usage: screencapture.py [OPTIONS] APPLICATION_NAME
+Usage: screencapture.py [OPTIONS] [APPLICATION_NAME]
 
 Options:
   -w, --window_selection_options TEXT
-                                  Options: all_windows on_screen_only
-                                  exclude_desktop include_window below_window
-                                  above_window
+                                  Options: above_window below_window
+                                  all_windows include_window on_screen_only
+                                  exclude_desktop
                                   Default: exclude_desktop
                                   on_screen_only
   -t, --title TEXT                Title of window from APPLICATION_NAME to
                                   capture.
   -f, --filename TEXT             Filename to save the captured PNG as.
   -a, --all_windows               Capture all windows matching parameters
+  -l, --list_windows              List window IDs.
   --help                          Show this message and exit.
 ```
 

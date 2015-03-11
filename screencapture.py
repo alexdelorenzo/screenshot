@@ -3,7 +3,8 @@ from subprocess import getstatusoutput
 
 import click
 
-from get_window_id import gen_window_ids, options, user_options_str
+from get_window_id import gen_window_ids, options, user_options_str, print_window_ids, gen_ids_from_info, \
+    get_window_info, summer
 
 
 def take_screenshot(window: int, filename: str) -> str:
@@ -25,9 +26,14 @@ def _filename(*args) -> str:
 @click.option('-t', '--title', default=None, help="Title of window from APPLICATION_NAME to capture.")
 @click.option('-f', '--filename', default=None, help="Filename to save the captured PNG as.")
 @click.option('-a', '--all_windows', is_flag=True, default=False, help="Capture all windows matching parameters")
-@click.argument('application_name')
+@click.option('-l', '--list_windows', is_flag=True, default=False, help="List window IDs.")
+@click.argument('application_name', default="")
 def screenshot_window(application_name: str, title: str='', filename: str='', window_selection_options: str='',
-                      all_windows: bool=False, **kwargs):
+                      all_windows: bool=False, list_windows: bool=False, **kwargs):
+    if list_windows:
+        print_window_ids(gen_ids_from_info(get_window_info(summer(*window_selection_options.split()))))
+        return
+
     windows = gen_window_ids(application_name, title, window_selection_options)
 
     try:
