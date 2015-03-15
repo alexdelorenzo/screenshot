@@ -1,3 +1,4 @@
+from itertools import chain
 from datetime import datetime
 from subprocess import getstatusoutput
 
@@ -7,10 +8,11 @@ from get_window_id import gen_window_ids, options, user_options_str
 
 
 def take_screenshot(window: int, filename: str) -> str:
-    rc, output = getstatusoutput('screencapture -l %s "%s"' % (window, filename))
+    command = 'screencapture -l %s "%s"'
+    rc, output = getstatusoutput(command % (window, filename))
 
     if rc != 0:
-        raise Exception("Error in screenccapture command %s: %s", (rc, output))
+        raise Exception("Error in screenccapture command %s; Return code: %s Output: %s" % (command, rc, output))
 
     return filename
 
@@ -37,7 +39,7 @@ def screenshot_window(application_name: str, title: str='', filename: str='', wi
         raise ValueError("Window with parent %s and title %s not found." % (application_name, title)) from ex
 
     if all_windows:
-        windows = [window] + list(windows)
+        windows = chain([window], windows)
 
         for window in windows:
             filename = _filename(application_name, title)
