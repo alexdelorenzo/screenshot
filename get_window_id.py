@@ -39,9 +39,9 @@ def print_window_ids(windows: iter):
         print(*info)
 
 
-def gen_window_ids(parent: str, title: str='', *args, options=str) -> iter:
+def gen_window_ids(parent: str, title: str='', options: str=user_options_str, relative_to: bool=kCGNullWindowID) -> iter:
     options = summer(*options.split(' '))
-    windows = get_window_info(options)
+    windows = get_window_info(options, relative_to)
     parent, title = parent.lower(), title.lower()
 
     for num, owner, name in gen_ids_from_info(windows):
