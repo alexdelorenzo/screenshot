@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from itertools import chain
 from datetime import datetime
 from subprocess import getstatusoutput
