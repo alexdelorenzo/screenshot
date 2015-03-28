@@ -31,7 +31,7 @@ def _filename(*args) -> str:
     return '_'.join(map(str, args + (datetime.now(),))) + FILE_EXT
 
 
-@click.command
+@click.command()
 @click.option('-w', '--window_selection_options', default=user_options_str,
               help="Options: " + ', '.join(options) + '\nDefault: ' + user_options_str)
 @click.option('-t', '--title', default=None, help="Title of window from APPLICATION_NAME to capture.")
