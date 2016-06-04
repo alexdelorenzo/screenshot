@@ -1,5 +1,5 @@
 # pyscreencapture
-## Take screenshots on Mac OS X from the command line like God intended
+## Take screenshots on Mac OS X from the command line
 
 pyscreencapture lets you specify an Application Name and Window Title to take a screenshot of a specific window via the commandline.
 It's a thin wrapper that grabs the window IDs from Quartz and passes them to `screencapture`.
