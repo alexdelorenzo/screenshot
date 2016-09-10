@@ -34,7 +34,6 @@ Options:
                                   capture.
   -f, --filename TEXT             Filename to save the captured PNG as.
   -a, --all_windows               Capture all windows matching parameters
-  -l, --list_windows              List window IDs.
   --help                          Show this message and exit.
 ```
 
