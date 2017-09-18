@@ -34,6 +34,11 @@ Options:
                                   capture.
   -f, --filename TEXT             Filename to save the captured PNG as.
   -a, --all_windows               Capture all windows matching parameters
+  -t, --type TEXT                 Image format to create, default is png
+                                  (other options include pdf, jpg, tiff)
+  -i, --interval INTEGER          Capture interval in seconds. Do not
+                                  duplicate similar images
+  -o, --no_shadow                 Do not capture the shadow of the window.
   --help                          Show this message and exit.
 ```
 
