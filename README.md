@@ -1,6 +1,6 @@
 # 📸 screenshot: Better macOS screenshots via the Terminal
 
-`screenshot` is a command line utility that lets you specify an *application name* and *window title* to take a screenshot of a specific window.
+`screenshot` is a command line utility that lets you specify an *application name* and *window title* in order to take a screenshot of a specific window.
 
 Using `screenshot` you can capture windows belonging to an application, or only an application's windows with certain titles.
 
