@@ -29,6 +29,8 @@ screenshot Pycharm -t screenshot
 
 
 ## Installation
+You will need Python 3.6+. Please install it with `brew` or `ports` if you do not have it already.
+
 ### PyPI
 ```bash
 pip3 install screenshot
