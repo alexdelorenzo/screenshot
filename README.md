@@ -14,7 +14,7 @@ In newer versions of macOS, the `screencapture` utility improves the user experi
 
 However, that necessitates that the user clicks a window each time. You cannot include this as part of an automated pipeline.
 
-To that end, I use this utility to automate the generation of screenshots of web, mobile and desktop applications.
+To that end, I use this utility to automatically generate screenshots of web, mobile and desktop applications.
 
 ## Example
 Take a screenshot of the Pycharm application with the *window title* containing "screenshot".
