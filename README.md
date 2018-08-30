@@ -1,5 +1,5 @@
-# screenshot
-## Take screenshots on macOS from the command line
+# 📸 screenshot
+## Better macOS Screencaptures via the Terminal
 
 `screenshot` lets you specify an *application name* and *window title* to take a screenshot of a specific window via the command line.
 
