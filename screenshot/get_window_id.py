@@ -1,31 +1,40 @@
+from typing import Iterable, List, Dict, AnyStr, Union
+
 try:
-    from Quartz import CGWindowListCopyWindowInfo, kCGWindowListExcludeDesktopElements, kCGNullWindowID, kCGWindowNumber, \
-                       kCGWindowName, kCGWindowOwnerName, kCGWindowListOptionAll, kCGWindowListOptionOnScreenOnly, \
-                       kCGWindowListOptionOnScreenAboveWindow, kCGWindowListOptionOnScreenBelowWindow, \
-                       kCGWindowListOptionIncludingWindow
+    from Quartz import CGWindowListCopyWindowInfo, kCGWindowListExcludeDesktopElements, kCGNullWindowID, \
+        kCGWindowNumber, kCGWindowName, kCGWindowOwnerName, kCGWindowListOptionAll, kCGWindowListOptionOnScreenOnly, \
+        kCGWindowListOptionOnScreenAboveWindow, kCGWindowListOptionOnScreenBelowWindow, \
+        kCGWindowListOptionIncludingWindow
 
 except ImportError as ex:
-    raise ImportError("Please install pyobjc-framework-Quartz via pip.") from ex
+    raise ImportError("Please install pyobjc-framework-Quartz via pip and then try again.") from ex
 
 
-options = {'all_windows': kCGWindowListOptionAll,
-           'on_screen_only': kCGWindowListOptionOnScreenOnly,
-           'above_window': kCGWindowListOptionOnScreenAboveWindow,
-           'below_window': kCGWindowListOptionOnScreenBelowWindow,
-           'include_window': kCGWindowListOptionIncludingWindow,
-           'exclude_desktop': kCGWindowListExcludeDesktopElements}
+WindowInfo = Dict[AnyStr, Union[AnyStr, int]]
 
-user_options_str = 'exclude_desktop on_screen_only'
+WINDOW_OPTIONS = {'all_windows': kCGWindowListOptionAll,
+                  'on_screen_only': kCGWindowListOptionOnScreenOnly,
+                  'above_window': kCGWindowListOptionOnScreenAboveWindow,
+                  'below_window': kCGWindowListOptionOnScreenBelowWindow,
+                  'include_window': kCGWindowListOptionIncludingWindow,
+                  'exclude_desktop': kCGWindowListExcludeDesktopElements}
 
-summer = lambda *opts: sum(options[opt] for opt in opts if opt in options)
-user_options = summer(*user_options_str.split(' '))
+USER_OPTS_STR = 'exclude_desktop on_screen_only'
 
 
-def get_window_info(options: int=user_options, relative_to: bool=kCGNullWindowID) -> list:
+def build_option_bitmask(*opts: Iterable[str]) -> int:
+    return sum(WINDOW_OPTIONS[opt] for opt in opts if opt in WINDOW_OPTIONS)
+
+
+USER_OPTIONS = build_option_bitmask(*USER_OPTS_STR.split(' '))
+
+
+def get_window_info(options: int = USER_OPTIONS,
+                    relative_to: int = kCGNullWindowID) -> List[WindowInfo]:
     return CGWindowListCopyWindowInfo(options, relative_to)
 
 
-def gen_ids_from_info(windows: iter) -> iter:
+def gen_ids_from_info(windows: Iterable[WindowInfo]) -> iter:
     for win_dict in windows:
         owner = win_dict.get('kCGWindowOwnerName', '')
         name = win_dict.get('kCGWindowName', '')
@@ -39,8 +48,9 @@ def print_window_ids(windows: iter):
         print(*info)
 
 
-def gen_window_ids(parent: str, title: str='', options: str=user_options_str, relative_to: bool=kCGNullWindowID) -> iter:
-    options = summer(*options.split(' '))
+def gen_window_ids(parent: str, title: str = '', options: str = USER_OPTS_STR,
+                   relative_to: bool = kCGNullWindowID) -> Iterable[int]:
+    options = build_option_bitmask(*options.split(' '))
     windows = get_window_info(options, relative_to)
     parent, title = parent.lower(), title.lower()
 

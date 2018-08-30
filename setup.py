@@ -13,7 +13,9 @@ with open(os.path.join(os.path.dirname(__file__), 'README.md')) as file:
     readme = file.read()
 
 
-requirements = [line for line in Path('requirements.txt').read_text().split('\n') if line]
+requirements = [line
+                for line in Path('requirements.txt').read_text().split('\n')
+                if line]
 
 CMD = 'screenshot'
 
@@ -43,13 +45,13 @@ setup(
     include_package_data=True,
     entry_points={
         'console_scripts':
-            [f'{CMD} = screenshot.screencapture:screenshot_window']
+            [f'{CMD} = screenshot.screencapture:run']
     },
     #
     # ## app nonsense
     # app=['brightness/change_brightness.py'],
     # datafiles=['brightness/.'],
-    # options={'py2app': OPTIONS},
+    # WINDOW_OPTIONS={'py2app': OPTIONS},
     # setup_requires=['py2app']
 
 )

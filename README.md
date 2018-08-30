@@ -1,13 +1,23 @@
-# pyscreencapture
-## Take screenshots on Mac OS X from the command line
+# screenshot
+## Take screenshots on macOS from the command line
 
-pyscreencapture lets you specify an Application Name and Window Title to take a screenshot of a specific window via the commandline.
-It's a thin wrapper that grabs the window IDs from Quartz and passes them to `screencapture`.
+`screenshot` lets you specify an *application name* and *window title* to take a screenshot of a specific window via the command line.
+
+## Justification and Use Case
+The macOS `screencapture` utility is not user friendly. 
+
+To programmatically take a screenshot of an application, or a specific window, you must supply a *window ID* to `screencapture`.
+In order to find a window's *window ID*, you'll need call out to Quartz.
+
+In newer versions of macOS, the `screencapture` utility improves the user experience slightly: you can run the command and then click on the window you'd like to screenshot.
+However, this necessitates that the user clicks a window each time. You cannot include this as part of an automated pipeline.
+
+To that end, I use this utility to automate the generation of screenshots of web, mobile and desktop applications.
 
 ## Example
-Take a screenshot of the Pycharm application with the window title containing "pyscreencapture".
+Take a screenshot of the Pycharm application with the *window title* containing "screenshot".
 
-`python3 screencapture.py Pycharm -t pyscreencapture`
+`screenshot Pycharm -t screenshot`
 
 
 ## Installation
@@ -15,13 +25,13 @@ Grab the source, run the following in the source dir:
 `pip3 install -r requirements.txt`
 
 then run
-`python3 pyscreencapture.py --help`
+`python3 setup.py install && screenshot --help`
 
-## Help
-`python3 pyscreencapture.py --help`
+## Usage
+`screenshot --help`
 
 ```
-Usage: screencapture.py [OPTIONS] [APPLICATION_NAME]
+Usage: screenshot [OPTIONS] [APPLICATION_NAME]
 
 Options:
   -w, --window_selection_options TEXT
