@@ -2,6 +2,8 @@
 
 `screenshot` is a command line utility that lets you specify an *application name* and *window title* to take a screenshot of a specific window.
 
+Using `screenshot` you can capture windows belonging to an application, or only an application's windows with certain titles.
+
 ## Justification and Use Case
 The macOS `screencapture` utility is not developer friendly. 
 
