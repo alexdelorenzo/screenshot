@@ -21,7 +21,7 @@ Take a screenshot of the Pycharm application with the *window title* containing 
 
 
 ## Installation
-## PyPI
+### PyPI
 `pip3 install screenshot`
 
 ### Github Source
