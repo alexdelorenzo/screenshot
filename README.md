@@ -1,4 +1,4 @@
-# 📸 screenshot: Better macOS Screencaptures via the Terminal
+# 📸 screenshot: Better macOS screenshots via the Terminal
 
 `screenshot` is a command line utility that lets you specify an *application name* and *window title* to take a screenshot of a specific window.
 
