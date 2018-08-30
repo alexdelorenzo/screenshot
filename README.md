@@ -4,7 +4,7 @@
 `screenshot` lets you specify an *application name* and *window title* to take a screenshot of a specific window via the command line.
 
 ## Justification and Use Case
-The macOS `screencapture` utility is not user friendly. 
+The macOS `screencapture` utility is not developer friendly. 
 
 To programmatically take a screenshot of an application, or a specific window, you must supply a *window ID* to `screencapture`.
 In order to find a window's *window ID*, you'll need call out to Quartz.
