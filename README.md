@@ -17,39 +17,54 @@ However, that necessitates that the user clicks a window each time. You cannot i
 To that end, I use this utility to automatically generate screenshots of web, mobile and desktop applications.
 
 ## Example
-Take a screenshot of the Pycharm application with the *window title* containing "screenshot".
+Take a screenshot of the current Terminal window and view it with Preview.app:
+```bash
+open "`screenshot Terminal`"
+```
 
-`screenshot Pycharm -t screenshot`
+Take a screenshot of the Pycharm application with the *window title* containing "screenshot":
+```bash
+screenshot Pycharm -t screenshot
+```
 
 
 ## Installation
 ### PyPI
-`pip3 install screenshot`
+```bash
+pip3 install screenshot
+```
 
 ### Github Source
 Grab the source, run the following in the source dir:
-`pip3 install -r requirements.txt`
+```bash
+pip3 install -r requirements.txt
+```
 
 then run
-`python3 setup.py install`
+```bash
+python3 setup.py install
+```
 
 ## Usage
 `screenshot --help`
 
 ```
-Usage: screenshot [OPTIONS] [APPLICATION_NAME]
+Usage: screenshot [OPTIONS] APPLICATION_NAME
 
 Options:
   -w, --window_selection_options TEXT
-                                  Options: above_window below_window
-                                  all_windows include_window on_screen_only
+                                  Options: all_windows, on_screen_only,
+                                  above_window, below_window, include_window,
                                   exclude_desktop
                                   Default: exclude_desktop
                                   on_screen_only
   -t, --title TEXT                Title of window from APPLICATION_NAME to
                                   capture.
   -f, --filename TEXT             Filename to save the captured PNG as.
-  -a, --all_windows               Capture all windows matching parameters
+  -a, --all_windows               Capture all windows matching parameters.
+  -o, --output TEXT               Image format to create, default is png
+                                  (other options include pdf, jpg, tiff)
+  -s, --shadow                    Capture the shadow of the window.
   --help                          Show this message and exit.
 ```
 
