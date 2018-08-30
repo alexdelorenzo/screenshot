@@ -21,11 +21,15 @@ Take a screenshot of the Pycharm application with the *window title* containing 
 
 
 ## Installation
+## PyPI
+`pip3 install screenshot`
+
+### Github Source
 Grab the source, run the following in the source dir:
 `pip3 install -r requirements.txt`
 
 then run
-`python3 setup.py install && screenshot --help`
+`python3 setup.py install`
 
 ## Usage
 `screenshot --help`
