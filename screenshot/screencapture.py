@@ -6,7 +6,7 @@ from subprocess import getstatusoutput
 
 import click
 
-from get_window_id import gen_window_ids, options, user_options_str
+from .get_window_id import gen_window_ids, options, user_options_str
 
 
 FILE_EXT = '.png'
@@ -22,7 +22,7 @@ def take_screenshot(window: int, filename: str, **kwargs) -> str:
     rc, output = getstatusoutput(COMMAND % (window, filename))
 
     if rc != STATUS_OK:
-        raise ScreencaptureEx("Error in screenccapture command '%s'; Return code: %s Output: %s" % (COMMAND, rc, output))
+        raise ScreencaptureEx(f"Error in screenccapture command '{COMMAND}'; Return code: {rc} Output: {output}")
 
     return filename
 
