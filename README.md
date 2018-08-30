@@ -8,8 +8,9 @@ The macOS `screencapture` utility is not developer friendly.
 To programmatically take a screenshot of an application, or a specific window, you must supply a *window ID* to `screencapture`.
 In order to find a window's *window ID*, you'll need call out to Quartz.
 
-In newer versions of macOS, the `screencapture` utility improves the user experience slightly: you can run the command and then click on the window you'd like to screenshot.
-However, this necessitates that the user clicks a window each time. You cannot include this as part of an automated pipeline.
+In newer versions of macOS, the `screencapture` utility improves the user experience slightly: you can run the command and then click on the window you'd like to capture.
+
+However, that necessitates that the user clicks a window each time. You cannot include this as part of an automated pipeline.
 
 To that end, I use this utility to automate the generation of screenshots of web, mobile and desktop applications.
 
