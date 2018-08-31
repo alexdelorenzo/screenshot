@@ -31,7 +31,7 @@ CMD = 'screenshot'
 
 setup(
     name="screenshot",
-    version="0.6.0",
+    version="1.0.0",
     author="Alex DeLorenzo",
     author_email="alexdelorenzo@gmail.com",
     description="Take screenshots on macOS",
