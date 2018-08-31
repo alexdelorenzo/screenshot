@@ -34,7 +34,7 @@ def take_screenshot(window: int, filename: str, options: List[str] = None) -> st
     rc, output = getstatusoutput(COMMAND.format(window=window, filename=filename, options=options))
 
     if rc != STATUS_OK:
-        raise ScreencaptureEx(f"Error in screenccapture command '{COMMAND}'; Return code: {rc} Output: {output}")
+        raise ScreencaptureEx(f"Error: screencapture output: {output}")
 
     return filename
 
