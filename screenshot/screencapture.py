@@ -59,15 +59,11 @@ def gen_windows(application_name: str, title: str, window_selection_options: str
 def screenshot_windows(application_name: str,
                        title: str = '',
                        window_selection_options: str = '',
-                       options: List[str] = None) -> List[str]:
-    filenames: List[str] = []
+                       options: List[str] = None) -> Iterable[str]:
     windows = gen_windows(application_name, title, window_selection_options)
 
     for window in windows:
-        filename = take_screenshot(window, get_filename(application_name, title))
-        filenames.append(filename)
-
-    return filenames
+        yield take_screenshot(window, get_filename(application_name, title))
 
 
 def screenshot_window(application_name: str,
