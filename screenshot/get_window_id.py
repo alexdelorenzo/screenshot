@@ -1,4 +1,4 @@
-from typing import Iterable, List, Dict, AnyStr, Union
+from typing import Iterable, List, Dict, AnyStr, Union, Iterator
 
 try:
     from Quartz import CGWindowListCopyWindowInfo, kCGWindowListExcludeDesktopElements, kCGNullWindowID, \
@@ -34,7 +34,7 @@ def get_window_info(options: int = USER_OPTIONS,
     return CGWindowListCopyWindowInfo(options, relative_to)
 
 
-def gen_ids_from_info(windows: Iterable[WindowInfo]) -> iter:
+def gen_ids_from_info(windows: Iterable[WindowInfo]) -> Iterator[int, str, str]:
     for win_dict in windows:
         owner = win_dict.get('kCGWindowOwnerName', '')
         name = win_dict.get('kCGWindowName', '')
@@ -43,13 +43,13 @@ def gen_ids_from_info(windows: Iterable[WindowInfo]) -> iter:
         yield num, owner, name
 
 
-def print_window_ids(windows: iter):
+def print_window_ids(windows):
     for info in windows:
         print(*info)
 
 
 def gen_window_ids(parent: str, title: str = '', options: str = USER_OPTS_STR,
-                   relative_to: bool = kCGNullWindowID) -> Iterable[int]:
+                   relative_to: bool = kCGNullWindowID) -> Iterator[int]:
     options = build_option_bitmask(*options.split(' '))
     windows = get_window_info(options, relative_to)
     parent, title = parent.lower(), title.lower()

@@ -103,6 +103,9 @@ def run(application_name: str,
 
     try:
         if all_windows:
+            if filename:
+                print(f'Taking screenshots of all windows beloning to {application_name}, filename option ignored.')
+
             for filename in screenshot_windows(application_name, title, window_selection_options):
                 print(filename)
 
