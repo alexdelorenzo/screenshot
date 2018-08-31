@@ -1,4 +1,4 @@
-from typing import Iterable, List, Dict, AnyStr, Union, Iterator
+from typing import Iterable, List, Dict, AnyStr, Union, Iterator, Tuple
 
 try:
     from Quartz import CGWindowListCopyWindowInfo, kCGWindowListExcludeDesktopElements, kCGNullWindowID, \
@@ -34,7 +34,7 @@ def get_window_info(options: int = USER_OPTIONS,
     return CGWindowListCopyWindowInfo(options, relative_to)
 
 
-def gen_ids_from_info(windows: Iterable[WindowInfo]) -> Iterator[int, str, str]:
+def gen_ids_from_info(windows: Iterable[WindowInfo]) -> Iterator[Tuple[int, str, str]]:
     for win_dict in windows:
         owner = win_dict.get('kCGWindowOwnerName', '')
         name = win_dict.get('kCGWindowName', '')
