@@ -2,7 +2,7 @@
 from itertools import chain
 from datetime import datetime
 from subprocess import getstatusoutput
-from typing import List, Iterable
+from typing import List, Iterable, Iterator
 
 import click
 
@@ -43,15 +43,14 @@ def get_filename(*args) -> str:
     return ' '.join(map(str, args + (datetime.now(),))) + FILE_EXT
 
 
-def gen_windows(application_name: str, title: str, window_selection_options: str) -> Iterable[int]:
+def gen_windows(application_name: str, title: str, window_selection_options: str) -> Iterator[int]:
     windows = gen_window_ids(application_name, title, window_selection_options)
 
     try:
-        window = next(windows)
-        yield window
+        yield next(windows)
 
-    except StopIteration as ex:
-        raise ScreencaptureEx("Window with parent %s and title %s not found." % (application_name, title)) from ex
+    except StopIteration as e:
+        raise ScreencaptureEx(f"Window with parent {application_name} and title {title} not found.") from e
 
     yield from windows
 
@@ -59,11 +58,11 @@ def gen_windows(application_name: str, title: str, window_selection_options: str
 def screenshot_windows(application_name: str,
                        title: str = '',
                        window_selection_options: str = '',
-                       options: List[str] = None) -> Iterable[str]:
+                       options: List[str] = None) -> Iterator[str]:
     windows = gen_windows(application_name, title, window_selection_options)
 
     for window in windows:
-        yield take_screenshot(window, get_filename(application_name, title))
+        yield take_screenshot(window, get_filename(application_name, title), options)
 
 
 def screenshot_window(application_name: str,
