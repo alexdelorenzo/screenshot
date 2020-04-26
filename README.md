@@ -71,4 +71,4 @@ Options:
 ```
 
 ## License
-See `LICENSE`
+See `LICENSE`. Message me if you'd like to use this project with a different license.
