@@ -22,7 +22,7 @@ setup(
     description="Take screenshots on macOS",
     license="AGPL-3.0",
     keywords="screenshot macos osx apple screencapture pyscreencapture",
-    url="https://github.com/thismachinechills/pyscreencapture",
+    url="https://github.com/alexdelorenzo/screenshot",
     packages=['screenshot'],
     long_description=readme,
     zip_safe=True,
