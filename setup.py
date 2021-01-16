@@ -13,15 +13,6 @@ requirements = [line
 
 CMD = 'screenshot'
 
-# OPTIONS = {
-#     'argv_emulation': True,
-#     'plist': {
-#         'LSUIElement': True,
-#     },
-#     'packages': ['objc', 'cv2', 'face_recognition'],
-#     'bdist_base': str(Path(getcwd()).parent) + '/build',
-#     'dist_dir': str(Path(getcwd()).parent) + '/dist'
-# }
 
 setup(
     name="screenshot",
@@ -41,11 +32,4 @@ setup(
         'console_scripts':
             [f'{CMD} = screenshot.mac.capture:run']
     },
-    #
-    # ## app nonsense
-    # app=['brightness/change_brightness.py'],
-    # datafiles=['brightness/.'],
-    # WINDOW_OPTIONS={'py2app': OPTIONS},
-    # setup_requires=['py2app']
-
 )
