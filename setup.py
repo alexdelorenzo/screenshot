@@ -4,14 +4,8 @@ from os import getcwd
 from setuptools import setup
 from pathlib import Path
 
-# Utility function to read the README file.
-# Used for the long_description.  It's nice, because now 1) we have a top level
-# README file and 2) it's easier to type in the README file than to put a raw
-# string in below ...
 
-with open(os.path.join(os.path.dirname(__file__), 'README.md')) as file:
-    readme = file.read()
-
+readme = Path("README.md").read_text()
 
 requirements = [line
                 for line in Path('requirements.txt').read_text().split('\n')
@@ -45,7 +39,7 @@ setup(
     include_package_data=True,
     entry_points={
         'console_scripts':
-            [f'{CMD} = screenshot.screencapture:run']
+            [f'{CMD} = screenshot.mac.capture:run']
     },
     #
     # ## app nonsense
