@@ -16,10 +16,11 @@ CMD = 'screenshot'
 
 setup(
     name="screenshot",
-    version="1.0.0",
+    version="0.2.0",
     author="Alex DeLorenzo",
     author_email="alexdelorenzo@gmail.com",
     description="Take screenshots on macOS",
+    long_description_content_type="text/markdown",
     license="AGPL-3.0",
     keywords="screenshot macos osx apple screencapture pyscreencapture",
     url="https://github.com/alexdelorenzo/screenshot",
